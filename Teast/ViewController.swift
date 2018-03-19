@@ -10,9 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var Textfield: UITextField!
+    @IBOutlet weak var UIlabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Textfield.delegate = self as! UITextFieldDelegate
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +23,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func Buttonaction(_ sender: Any) {
+        UIlabel.text = Textfield.text
+        Textfield.text = ""
+        Textfield.resignFirstResponder()
+    }
+    func textfieldShouldReturn(_textfield: UITextfield) -> Bool {
+        print("I pressed return Key")
+        Textfield.resignFirstResponder()
+        return true
+    }
+    
 }
 
